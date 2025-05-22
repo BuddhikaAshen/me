@@ -24,7 +24,7 @@ body {
 
 /* Header Styles */
 header {
-    margin-top: 20px;
+/*     margin-top: 20px; */
     position: fixed;
     top: 0;
     left: 0;
@@ -41,7 +41,7 @@ header {
 }
 
 .logo {
-    font-size: 3rem;
+    font-size: 2rem;
     color: #b74b4b;
     font-weight: 800;
     cursor: pointer;
