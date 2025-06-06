@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Diamond Store - Buy Diamonds Instantly</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Arial, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(255,69,0,0.8), rgba(255,140,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff4500, #ff8c00);
+            color: white;
+            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #1e90ff, #00bfff);
+            color: white;
+            box-shadow: 0 8px 25px rgba(30, 144, 255, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 69, 0, 0.6);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 12px 35px rgba(30, 144, 255, 0.6);
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        }
+
+        .carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .carousel-track {
+            display: flex;
+            animation: scroll 15s linear infinite;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .carousel-item {
+            min-width: 400px;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            margin-right: 20px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,69,0,0.3), rgba(255,140,0,0.3));
+            border-radius: 15px;
+        }
+
+        /* Diamond Packages Section */
+        .packages-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, #ff4500, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .package-card {
+            background: linear-gradient(145deg, #2d2d2d, #3d3d3d);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #ff4500, #ff8c00);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 69, 0, 0.3);
+        }
+
+        .package-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .package-icon {
+            font-size: 3rem;
+            color: #ff4500;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .package-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ff8c00;
+        }
+
+        .package-diamonds {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .package-price {
+            font-size: 1.8rem;
+            color: #ff4500;
+            font-weight: bold;
+        }
+
+        /* Why Choose Us Section */
+        .features-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 69, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #ff4500;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #ff8c00;
+        }
+
+        .feature-description {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* How to Buy Section */
+        .howto-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .step-card {
+            background: linear-gradient(145deg, #2d2d2d, #3d3d3d);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: scale(1.05);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff4500, #ff8c00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ff8c00;
+        }
+
+        .step-description {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #e4405f, #833ab4);
+            color: white;
+        }
+
+        .telegram-btn {
+            background: linear-gradient(45deg, #0088cc, #0066aa);
+            color: white;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .carousel-item {
+                min-width: 300px;
+                height: 200px;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* Floating Elements */
+        .floating-diamond {
+            position: fixed;
+            font-size: 2rem;
+            color: #ff4500;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Diamonds -->
+    <div class="floating-diamond" style="top: 10%; left: 5%;"><i class="fas fa-gem"></i></div>
+    <div class="floating-diamond" style="top: 20%; right: 10%; animation-delay: 1s;"><i class="fas fa-gem"></i></div>
+    <div class="floating-diamond" style="bottom: 30%; left: 8%; animation-delay: 2s;"><i class="fas fa-gem"></i></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>🔥 Buy Free Fire Diamonds Instantly! 🔥</h1>
+            <p>Fast, Reliable & Affordable Diamond Packages</p>
+            <div class="cta-buttons">
+                <a href="#packages" class="btn btn-primary">
+                    <i class="fas fa-gem"></i> View Packages
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i> Contact Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diamond Packages Section -->
+    <section class="packages-section" id="packages">
+        <div class="container">
+            <h2 class="section-title">💎 Diamond Packages 💎</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-icon"><i class="fas fa-gem"></i></div>
+                    <div class="package-name">Basic Pack</div>
+                    <div class="package-diamonds">100 💎</div>
+                    <div class="package-price">$1.99</div>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon"><i class="fas fa-gem"></i></div>
+                    <div class="package-name">Popular Pack</div>
+                    <div class="package-diamonds">310 💎</div>
+                    <div class="package-price">$4.99</div>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon"><i class="fas fa-gem"></i></div>
+                    <div class="package-name">Value Pack</div>
+                    <div class="package-diamonds">520 💎</div>
+                    <div class="package-price">$7.99</div>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon"><i class="fas fa-gem"></i></div>
+                    <div class="package-name">Mega Pack</div>
+                    <div class="package-diamonds">1060 💎</div>
+                    <div class="package-price">$14.99</div>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon"><i class="fas fa-crown"></i></div>
+                    <div class="package-name">Weekly Membership</div>
+                    <div class="package-diamonds">7 Days VIP</div>
+                    <div class="package-price">$9.99</div>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon"><i class="fas fa-crown"></i></div>
+                    <div class="package-name">Monthly Membership</div>
+                    <div class="package-diamonds">30 Days VIP</div>
+                    <div class="package-price">$29.99</div>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon"><i class="fas fa-star"></i></div>
+                    <div class="package-name">VIP Package</div>
+                    <div class="package-diamonds">2000 💎 + Bonus</div>
+                    <div class="package-price">$24.99</div>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon"><i class="fas fa-fire"></i></div>
+                    <div class="package-name">Super VIP</div>
+                    <div class="package-diamonds">5000 💎 + Elite Pass</div>
+                    <div class="package-price">$49.99</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">🚀 Why Choose Us? 🚀</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="feature-title">Instant Delivery</div>
+                    <div class="feature-description">Get your diamonds delivered within minutes of payment confirmation.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="feature-title">Trusted Seller</div>
+                    <div class="feature-description">Over 10,000+ satisfied customers with 5-star reviews and ratings.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+                    <div class="feature-title">No Login Required</div>
+                    <div class="feature-description">Safe and secure process without sharing your account details.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-wallet"></i></div>
+                    <div class="feature-title">Affordable Prices</div>
+                    <div class="feature-description">Best prices in the market with regular discounts and offers.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Buy Section -->
+    <section class="howto-section">
+        <div class="container">
+            <h2 class="section-title">📱 How to Buy 📱</h2>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Select Package</div>
+                    <div class="step-description">Choose your desired diamond package from our affordable options above.</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Contact via WhatsApp</div>
+                    <div class="step-description">Click the WhatsApp button below and send us your Player ID and package choice.</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Pay & Get Diamonds</div>
+                    <div class="step-description">Complete payment through our secure methods and receive diamonds instantly!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">📞 Contact Us 📞</h2>
+            <div class="contact-buttons">
+                <a href="https://wa.me/1234567890?text=Hi%20I%20want%20to%20buy%20Free%20Fire%20diamonds" class="contact-btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp Now
+                </a>
+                <a href="https://instagram.com/firefirediamonds" class="contact-btn instagram-btn">
+                    <i class="fab fa-instagram"></i>
+                    Follow on Instagram
+                </a>
+                <a href="https://t.me/firefirediamonds" class="contact-btn telegram-btn">
+                    <i class="fab fa-telegram"></i>
+                    Join Telegram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply scroll reveal to package cards and feature cards
+        document.querySelectorAll('.package-card, .feature-card, .step-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add click effect to buttons
+        document.querySelectorAll('.btn, .contact-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add floating animation to gems
+        const gems = document.querySelectorAll('.floating-diamond');
+        gems.forEach((gem, index) => {
+            gem.style.animationDelay = `${index * 0.5}s`;
+        });
+
+        // Add dynamic background effect
+        const hero = document.querySelector('.hero');
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX / window.innerWidth;
+            mouseY = e.clientY / window.innerHeight;
+            
+            hero.style.backgroundPosition = `${50 + mouseX * 5}% ${50 + mouseY * 5}%`;
+        });
+    </script>
+
+    <style>
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>
+</html>
