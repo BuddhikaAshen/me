@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day Nethu! 💕</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #E0BBE4 50%, #FFC0CB 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Floating hearts animation */
+        .heart {
+            position: fixed;
+            bottom: -50px;
+            font-size: 30px;
+            animation: float-up 6s linear infinite;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        @keyframes float-up {
+            0% {
+                bottom: -50px;
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+            }
+        }
+
+        /* Photo hanging on rope */
+        .rope-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .rope {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #8B4513;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .photo-frame {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: white;
+            padding: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform-origin: top center;
+            animation: swing 3s ease-in-out infinite;
+            top: 25px;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background: #8B4513;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-1 { left: 10%; animation-delay: 0s; }
+        .photo-2 { left: 30%; animation-delay: 0.5s; }
+        .photo-3 { left: 50%; animation-delay: 1s; }
+        .photo-4 { left: 70%; animation-delay: 1.5s; }
+        .photo-5 { left: 90%; animation-delay: 2s; }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        /* Button styles */
+        .yes-button {
+            background: linear-gradient(45deg, #4A90E2 0%, #5DADE2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .yes-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.5);
+        }
+
+        .no-button {
+            background: linear-gradient(45deg, #a8a8a8 0%, #757575 100%);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        /* Love meter */
+        .love-meter {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+        }
+
+        .love-meter::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #E0BBE4 0%, #FFC0CB 100%);
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(224, 187, 228, 0.5);
+        }
+
+        .love-meter::-moz-range-thumb {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #E0BBE4 0%, #FFC0CB 100%);
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(224, 187, 228, 0.5);
+            border: none;
+        }
+
+        /* Celebration animation */
+        .celebration {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: celebrate 1s ease-out forwards;
+            z-index: 1000;
+        }
+
+        @keyframes celebrate {
+            0% {
+                transform: translate(-50%, -50%) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #87CEEB;
+            position: fixed;
+            top: -10px;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .photo-frame {
+                width: 80px;
+                height: 80px;
+            }
+            .photo-1 { left: 5%; }
+            .photo-2 { left: 25%; }
+            .photo-3 { left: 50%; }
+            .photo-4 { left: 75%; }
+            .photo-5 { left: 95%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div id="heartsContainer"></div>
+
+    <!-- Rope with hanging photos -->
+    <div class="rope-container">
+        <div class="rope"></div>
+        <div class="photo-frame photo-1">
+            <img src="1.jpeg" alt="Memory 1">
+        </div>
+        <div class="photo-frame photo-2">
+            <img src="2.jpeg" alt="Memory 2">
+        </div>
+        <div class="photo-frame photo-3">
+            <img src="3.jpeg" alt="Memory 3">
+        </div>
+        <div class="photo-frame photo-4">
+            <img src="4.jpeg" alt="Memory 4">
+        </div>
+        <div class="photo-frame photo-5">
+            <img src="5.jpeg" alt="Memory 5">
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="container mx-auto px-4 py-8 relative z-10" style="margin-top: 180px;">
+        <!-- Step 1: Initial greeting -->
+        <div id="step1" class="max-w-2xl mx-auto bg-white/95 backdrop-blur rounded-3xl shadow-2xl p-8 md:p-12 fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold text-center dancing-script mb-6 text-blue-500">
+                Hello Nethu! 💕
+            </h1>
+            <p class="text-xl md:text-2xl text-center text-gray-700 mb-8">
+                I have something special to ask you...
+            </p>
+            <button onclick="goToStep2()" class="yes-button w-full py-4 px-8 rounded-full text-white text-xl font-semibold">
+                Let's Go! ❤️
+            </button>
+        </div>
+
+        <!-- Step 2: First question -->
+        <div id="step2" class="max-w-2xl mx-auto bg-white/95 backdrop-blur rounded-3xl shadow-2xl p-8 md:p-12 hidden fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-center dancing-script mb-8 text-blue-500">
+                Do you like spending time with me? 🥰
+            </h2>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button onclick="goToStep3()" class="yes-button py-4 px-12 rounded-full text-white text-xl font-semibold">
+                    Yes! 💖
+                </button>
+                <button id="noBtn1" onmouseover="runAway(this)" onclick="runAway(this)" class="no-button py-4 px-12 rounded-full text-white text-xl font-semibold">
+                    No
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 3: Second question -->
+        <div id="step3" class="max-w-2xl mx-auto bg-white/95 backdrop-blur rounded-3xl shadow-2xl p-8 md:p-12 hidden fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-center dancing-script mb-8 text-blue-500">
+                Do I make you smile? 😊
+            </h2>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button onclick="goToStep4()" class="yes-button py-4 px-12 rounded-full text-white text-xl font-semibold">
+                    Yes! 😄
+                </button>
+                <button id="noBtn2" onmouseover="runAway(this)" onclick="runAway(this)" class="no-button py-4 px-12 rounded-full text-white text-xl font-semibold">
+                    No
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 4: The big question -->
+        <div id="step4" class="max-w-2xl mx-auto bg-white/95 backdrop-blur rounded-3xl shadow-2xl p-8 md:p-12 hidden fade-in">
+            <h2 class="text-3xl md:text-5xl font-bold text-center dancing-script mb-8 text-blue-500">
+                Do you really love me? 💝
+            </h2>
+            <div class="flex flex-col md:flex-row gap-4 justify-center relative" style="min-height: 80px;">
+                <button onclick="goToStep5()" class="yes-button py-4 px-12 rounded-full text-white text-xl font-semibold">
+                    Yes! I Love You! 💕
+                </button>
+                <button id="noBtn3" onmouseover="runAwayFast(this)" onclick="runAwayFast(this)" class="no-button py-4 px-12 rounded-full text-white text-xl font-semibold">
+                    No
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 5: Love meter -->
+        <div id="step5" class="max-w-2xl mx-auto bg-white/95 backdrop-blur rounded-3xl shadow-2xl p-8 md:p-12 hidden fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-center dancing-script mb-8 text-blue-500">
+                How much do you love me? 💗
+            </h2>
+            <div class="mb-8">
+                <div class="mb-6">
+                    <label class="block text-center text-lg mb-3 text-gray-700">Enter your love level (0-100):</label>
+                    <input type="number" min="0" max="100" value="0" 
+                           class="w-full md:w-1/2 mx-auto block px-6 py-4 text-center text-2xl font-bold rounded-full border-4 border-blue-300 focus:border-blue-500 focus:outline-none text-blue-600"
+                           id="loveInput"
+                           oninput="updateLoveBar()">
+                </div>
+                
+                <div class="relative w-full h-16 bg-gray-200 rounded-full overflow-hidden shadow-inner">
+                    <div id="loveBar" class="h-full bg-gradient-to-r from-blue-400 via-pink-400 to-purple-400 rounded-full transition-all duration-500 flex items-center justify-center" style="width: 100%">
+                        <span class="text-white font-bold text-2xl" id="loveBarText">100%</span>
+                    </div>
+                </div>
+                
+                <p class="text-center text-xl mt-6 font-semibold text-blue-500" id="loveText">Infinite Love! 💖</p>
+            </div>
+            <button onclick="showCelebration()" class="yes-button w-full py-4 px-8 rounded-full text-white text-xl font-semibold">
+                Submit ✨
+            </button>
+        </div>
+
+        <!-- Final celebration -->
+        <div id="celebration" class="max-w-3xl mx-auto bg-white/95 backdrop-blur rounded-3xl shadow-2xl p-8 md:p-12 hidden">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-7xl font-bold dancing-script mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-pink-400 to-purple-400 animate-pulse">
+                    Happy Valentine's Day
+                </h1>
+                <h2 class="text-4xl md:text-6xl font-bold dancing-script mb-8 text-blue-500">
+                    Wasthuuu! 
+                </h2>
+                <div class="text-6xl md:text-8xl mb-6 animate-bounce">
+                    💖
+                </div>
+                <p class="text-xl md:text-3xl text-gray-700 mb-4">
+                    You're my everything, Nethu!
+                </p>
+                <p class="text-lg md:text-xl text-gray-600 italic">
+                    Thank you for being the most amazing person in my life! 🌟
+                </p>
+                <div class="mt-8 text-5xl">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            const heartSymbols = ['❤️', '💕', '💖', '💗', '💝', '💘'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }, 800);
+        }
+
+        createHearts();
+
+        // Navigation functions
+        function goToStep2() {
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+        }
+
+        function goToStep3() {
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.remove('hidden');
+        }
+
+        function goToStep4() {
+            document.getElementById('step3').classList.add('hidden');
+            document.getElementById('step4').classList.remove('hidden');
+        }
+
+        function goToStep5() {
+            document.getElementById('step4').classList.add('hidden');
+            document.getElementById('step5').classList.remove('hidden');
+        }
+
+        // Make "No" button run away
+        function runAway(button) {
+            const maxX = window.innerWidth - button.offsetWidth - 20;
+            const maxY = window.innerHeight - button.offsetHeight - 20;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            button.style.position = 'fixed';
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+            button.style.transition = 'all 0.3s ease';
+        }
+
+        // Make "No" button run away faster for the important question
+        function runAwayFast(button) {
+            const maxX = window.innerWidth - button.offsetWidth - 20;
+            const maxY = window.innerHeight - button.offsetHeight - 20;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            button.style.position = 'fixed';
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+            button.style.transition = 'all 0.15s ease';
+        }
+
+        // Love bar functionality
+        function updateLoveBar() {
+            const loveInput = document.getElementById('loveInput');
+            const loveBar = document.getElementById('loveBar');
+            const loveBarText = document.getElementById('loveBarText');
+            const loveText = document.getElementById('loveText');
+            
+            let value = parseInt(loveInput.value);
+            
+            // Validate input
+            if (isNaN(value) || value < 0) {
+                value = 0;
+                loveInput.value = 0;
+            } else if (value > 100) {
+                value = 100;
+                loveInput.value = 100;
+            }
+            
+            // Update bar width
+            loveBar.style.width = value + '%';
+            loveBarText.textContent = value + '%';
+            
+            // Update message based on value
+            if (value >= 90) {
+                loveText.textContent = loveMessages[100];
+                loveBar.className = 'h-full bg-gradient-to-r from-blue-400 via-pink-400 to-purple-400 rounded-full transition-all duration-500 flex items-center justify-center';
+            } else if (value >= 70) {
+                loveText.textContent = loveMessages[80];
+                loveBar.className = 'h-full bg-gradient-to-r from-pink-400 to-purple-400 rounded-full transition-all duration-500 flex items-center justify-center';
+            } else if (value >= 50) {
+                loveText.textContent = loveMessages[60];
+                loveBar.className = 'h-full bg-gradient-to-r from-blue-400 to-pink-400 rounded-full transition-all duration-500 flex items-center justify-center';
+            } else if (value >= 30) {
+                loveText.textContent = loveMessages[40];
+                loveBar.className = 'h-full bg-blue-400 rounded-full transition-all duration-500 flex items-center justify-center';
+            } else if (value >= 10) {
+                loveText.textContent = loveMessages[20];
+                loveBar.className = 'h-full bg-blue-300 rounded-full transition-all duration-500 flex items-center justify-center';
+            } else {
+                loveText.textContent = loveMessages[0];
+                loveBar.className = 'h-full bg-gray-400 rounded-full transition-all duration-500 flex items-center justify-center';
+            }
+        }
+
+        const loveMessages = {
+            0: "Please try again! 😢",
+            20: "A little love! 💕",
+            40: "Growing love! 💗",
+            60: "Strong love! 💖",
+            80: "Amazing love! 💝",
+            100: "Infinite Love! 💖✨"
+        };
+
+        // Show celebration
+        function showCelebration() {
+            document.getElementById('step5').classList.add('hidden');
+            document.getElementById('celebration').classList.remove('hidden');
+            document.getElementById('celebration').classList.add('celebration');
+            
+            // Create confetti
+            createConfetti();
+            
+            // Play celebration sound (optional - browser will block without user interaction)
+            try {
+                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZUQ0OVqzn77BfFg1Gn+DyvmwhBTGH0fPTgjMGHm7A7+OZUQ0OVqzn77BfFg1Gn+DyvmwhBTGH0fPTgjMGHm7A7+OZUQ0OVqzn77BfFg1Gn+DyvmwhBTGH0fPTgjMGHm7A7+OZUQ0OVqzn77BfFg1Gn+DyvmwhBTGH0fPTgjMGHm7A7+OZUQ0OVqzn77BfFg');
+                audio.play().catch(() => {});
+            } catch (e) {}
+        }
+
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#87CEEB', '#4A90E2', '#E0BBE4', '#FFC0CB', '#B0E0E6', '#DDA0DD'];
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    confetti.style.animationDelay = Math.random() + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 5000);
+                }, i * 30);
+            }
+        }
+
+        // Replace placeholder images with your actual photos
+        // You can replace the Unsplash URLs with your own image paths like this:
+        // document.querySelector('.photo-1 img').src = 'path/to/your/image1.jpg';
+        // document.querySelector('.photo-2 img').src = 'path/to/your/image2.jpg';
+        // etc.
+    </script>
+</body>
+</html>
